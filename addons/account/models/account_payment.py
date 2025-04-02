@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 from lxml import etree
+import logging
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
+
+
+_logger = logging.getLogger(__name__)
 
 
 class AccountPaymentMethod(models.Model):
@@ -276,6 +280,11 @@ class AccountPayment(models.Model):
                 'account_id': self.destination_account_id.id,
             },
         ]
+        if not self.destination_account_id.id:
+            _logger.info(f"The payment {self} has no destination account set: {self.destination_account_id}, type: {self.partner_type}, internal: {self.is_internal_transfer}, company: {self.company_id}")
+            self._compute_destination_account_id()
+            line_vals_list[1]['account_id'] = self.destination_account_id.id
+
         if not self.currency_id.is_zero(write_off_amount_currency):
             # Write-off line.
             line_vals_list.append({

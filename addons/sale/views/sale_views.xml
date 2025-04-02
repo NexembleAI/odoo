@@ -716,7 +716,7 @@
         </record>
 
         <record id="view_sales_order_auto_done_setting" model="ir.ui.view">
-            <field name="name">sale.order.form</field>
+            <field name="name">sale.order.form.auto</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="groups_id" eval="[(4, ref('sale.group_auto_done_setting'))]"/>

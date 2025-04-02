@@ -678,6 +678,7 @@ form: module.record_id""" % (xml_id,)
             except ParseError:
                 raise
             except Exception as e:
+                _logger.error(f"Error while parsing {rec.tag} element {f}: {rec}")
                 raise ParseError('while parsing %s:%s, near\n%s' % (
                     rec.getroottree().docinfo.URL,
                     rec.sourceline,
@@ -781,6 +782,7 @@ def convert_xml_import(cr, module, xmlfile, idref=None, mode='init', noupdate=Fa
     try:
         relaxng.assert_(doc)
     except Exception:
+        _logger.info(f"XML: {etree.tostring(doc, pretty_print=True, encoding='UTF-8')}")
         _logger.exception("The XML file '%s' does not fit the required schema !", xmlfile.name)
         if jingtrang:
             p = subprocess.run(['pyjing', schema, xmlfile.name], stdout=subprocess.PIPE)

@@ -11,6 +11,7 @@
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
             <field name="mode">primary</field>
+            <!-- TODO: (PJ): Commented as was giving error in v14
             <field name="arch" type="xml">
                 <xpath expr="//footer[not(ancestor::field)]" position="attributes">
                     <attribute name="invisible">1</attribute>
@@ -20,7 +21,7 @@
                 <xpath expr="//field[@name='company_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-            </field>
+            </field>  -->
         </record>
 
         <record id="view_users_form_simple_modif_resource" model="ir.ui.view">

@@ -3,6 +3,7 @@
 
 import ast
 import collections
+from copy import deepcopy
 import datetime
 import fnmatch
 import inspect
@@ -741,6 +742,8 @@ actual arch.
                 pre_locate=pre_locate,
             )
         except ValueError as e:
+            _logger.error(f"Error in source {etree.tostring(source, encoding='unicode', pretty_print=True)} with specs {etree.tostring(specs_tree, encoding='unicode', pretty_print=True)}: {e}")
+            _logger.exception(e)
             self.handle_view_error(str(e))
         return source
 
@@ -754,9 +757,14 @@ actual arch.
         :return: a modified source where all the modifying architecture are applied
         """
         inherit_tree = collections.defaultdict(list)
+        source_copy = deepcopy(source)
         for view in self.get_inheriting_views_arch(model):
             inherit_tree[view.inherit_id].append(view)
-        return self._apply_view_inheritance(source, inherit_tree)
+        try:
+            return self._apply_view_inheritance(source, inherit_tree)
+        except Exception:
+            _logger.error(f"Error in model {model} with source {etree.tostring(source_copy, encoding='unicode', pretty_print=True)} with inherit_tree {inherit_tree}")
+            raise
 
     def _apply_view_inheritance(self, source, inherit_tree):
         # recursively apply inheritance following the given inheritance tree
@@ -2021,9 +2029,10 @@ class NameManager:
             corresponding_field = self.available_fields.get(str(field))
             if corresponding_field is None:
                 msg = _(
-                    "Field %(name)s used in %(use)s must be present in view but is missing.",
-                    name=field, use=use,
+                    "Field %(name)s used in %(use)s must be present in view %(view)s but is missing.",
+                    name=field, use=use, view=view.name
                 )
+                _logger.error(f"msg, fields: {self.available_fields}")
                 view.handle_view_error(msg)
             if corresponding_field.get('select') == 'multi':  # mainly for searchpanel, but can be a generic behaviour.
                 msg = _(

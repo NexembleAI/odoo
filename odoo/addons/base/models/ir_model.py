@@ -1425,7 +1425,10 @@ class IrModelSelection(models.Model):
                 records.invalidate_cache([fname])
 
         for selection in self:
-            Model = self.env[selection.field_id.model]
+            Model = self.env.get(selection.field_id.model)
+            if Model is None:
+                continue
+
             # The field may exist in database but not in registry. In this case
             # we allow the field to be skipped, but for production this should
             # be handled through a migration script. The ORM will take care of
@@ -2248,7 +2251,11 @@ class IrModelData(models.Model):
 
     @api.model
     def _process_end_unlink_record(self, record):
-        record.unlink()
+        try:
+            record.unlink()
+
+        except Exception as e:
+            _logger.error(f"{e}")
 
     @api.model
     def _process_end(self, modules):
