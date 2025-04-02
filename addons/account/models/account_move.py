@@ -4820,6 +4820,7 @@ class AccountMoveLine(models.Model):
                         move.date,
                     ))
 
+
         lines = super(AccountMoveLine, self).create(vals_list)
 
         moves = lines.mapped('move_id')

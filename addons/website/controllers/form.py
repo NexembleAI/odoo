@@ -208,14 +208,14 @@ class WebsiteForm(http.Controller):
         data['custom'] = "\n".join([u"%s : %s" % v for v in custom_fields])
 
         # Add metadata if enabled  # ICP for retrocompatibility
-        if request.env['ir.config_parameter'].sudo().get_param('website_form_enable_metadata'):
-            environ = request.httprequest.headers.environ
-            data['meta'] += "%s : %s\n%s : %s\n%s : %s\n%s : %s\n" % (
-                "IP"                , environ.get("REMOTE_ADDR"),
-                "USER_AGENT"        , environ.get("HTTP_USER_AGENT"),
-                "ACCEPT_LANGUAGE"   , environ.get("HTTP_ACCEPT_LANGUAGE"),
-                "REFERER"           , environ.get("HTTP_REFERER")
-            )
+        # if request.env['ir.config_parameter'].sudo().get_param('website_form_enable_metadata'):
+        #     environ = request.httprequest.headers.environ
+        #     data['meta'] += "%s : %s\n%s : %s\n%s : %s\n%s : %s\n" % (
+        #         "IP"                , environ.get("REMOTE_ADDR"),
+        #         "USER_AGENT"        , environ.get("HTTP_USER_AGENT"),
+        #         "ACCEPT_LANGUAGE"   , environ.get("HTTP_ACCEPT_LANGUAGE"),
+        #         "REFERER"           , environ.get("HTTP_REFERER")
+        #     )
 
         # This function can be defined on any model to provide
         # a model-specific filtering of the record values

@@ -2546,8 +2546,11 @@ class Selection(Field):
             value = int(value)
         if value in self.get_values(record.env):
             return value
+        elif str(value) in self.get_values(record.env):
+            return str(value)
         elif not value:
             return None
+        _logger.error(f"Wrong value for {self}: {value}, record: {record}, selection: {self.selection}")
         raise ValueError("Wrong value for %s: %r" % (self, value))
 
     def convert_to_export(self, value, record):

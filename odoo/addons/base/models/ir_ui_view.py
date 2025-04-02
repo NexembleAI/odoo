@@ -3,6 +3,7 @@
 
 import ast
 import collections
+from copy import deepcopy
 import datetime
 import fnmatch
 import inspect
@@ -868,7 +869,9 @@ actual arch.
                 pre_locate=pre_locate,
             )
         except ValueError as e:
-            self._raise_view_error(str(e), specs_tree)
+            _logger.error(f"Error in source {etree.tostring(source, encoding='unicode', pretty_print=True)} with specs {etree.tostring(specs_tree, encoding='unicode', pretty_print=True)}: {e}")
+            _logger.exception(e)
+            self.handle_view_error(str(e))
         return source
 
     def _combine(self, hierarchy: dict):
@@ -2280,9 +2283,10 @@ class NameManager:
             info = self.available_fields.get(name)
             if info is None:
                 msg = _(
-                    "Field %(name)r used in %(use)s must be present in view but is missing.",
-                    name=name, use=use,
+                    "Field %(name)s used in %(use)s must be present in view %(view)s but is missing.",
+                    name=field, use=use, view=view,
                 )
+                _logger.error(f"msg, fields: {self.available_fields}")
                 view._raise_view_error(msg)
             if info.get('select') == 'multi':  # mainly for searchpanel, but can be a generic behaviour.
                 msg = _(
