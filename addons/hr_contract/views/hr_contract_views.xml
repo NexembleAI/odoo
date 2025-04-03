@@ -9,6 +9,7 @@
                 <data>
                     <div name="button_box" position="inside">
                         <field name="contract_warning" invisible="1"/>
+                        <field name="employee_type" invisible="1"/>
                         <button name="action_open_contract_history"
                             class="oe_stat_button"
                             icon="fa-book"

@@ -871,7 +871,7 @@ actual arch.
         except ValueError as e:
             _logger.error(f"Error in source {etree.tostring(source, encoding='unicode', pretty_print=True)} with specs {etree.tostring(specs_tree, encoding='unicode', pretty_print=True)}: {e}")
             _logger.exception(e)
-            self.handle_view_error(str(e))
+            self._raise_view_error(_(str(e)))
         return source
 
     def _combine(self, hierarchy: dict):
@@ -2284,7 +2284,7 @@ class NameManager:
             if info is None:
                 msg = _(
                     "Field %(name)s used in %(use)s must be present in view %(view)s but is missing.",
-                    name=field, use=use, view=view,
+                    name=name, use=use, view=view,
                 )
                 _logger.error(f"msg, fields: {self.available_fields}")
                 view._raise_view_error(msg)
