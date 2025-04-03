@@ -585,8 +585,10 @@ class Users(models.Model):
             [('category_id', '=', user_types_category.id)]) if user_types_category else False
         if user_types_groups:  # needed at install
             if self._has_multiple_groups(user_types_groups.ids):
-                raise ValidationError(_('The user cannot have more than one user types.'))
-
+                # TODO: (PJ): Check if this needs to be fixed
+                # raise ValidationError(_('The user cannot have more than one user types.'))
+                _logger.error('The user cannot have more than one user types.')
+                
     def _has_multiple_groups(self, group_ids):
         """The method is not fast if the list of ids is very long;
            so we rather check all users than limit to the size of the group
