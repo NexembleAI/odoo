@@ -2719,7 +2719,7 @@ msgid ""
 "When creating invoices from picking, the system is able to add and compute the shipping line.\n"
 msgstr ""
 "\n"
-"Staat je toe om verzendwijzes toe te voegen aan je pickings.\n"
+"Staat je toe om verzendmethoden toe te voegen aan je pickings.\n"
 "===============================================\n"
 "\n"
 "Bij het maken van facturen vanuit leveringen kan het systeem de verzendregel toevoegen en berekenen.\n"
@@ -2734,7 +2734,7 @@ msgid ""
 "The system is able to add and compute the shipping line.\n"
 msgstr ""
 "\n"
-"Staat je toe om verzendwijzes toe te voegen aan je verkooporders.\n"
+"Staat je toe om verzendmethoden toe te voegen aan je verkooporders.\n"
 "==================================================\n"
 "Je kunt je eigen vervoerder voor prijzen bepalen.\n"
 "Het systeem kan de verzendlijn toevoegen en berekenen.\n"
@@ -4272,7 +4272,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Maak aanpasbare werkbladsjablonen voor onderhoud\n"
+"Maak aanpasbare werkbonsjablonen voor onderhoud\n"
 "================================================= =====\n"
 "\n"
 
@@ -4485,7 +4485,7 @@ msgid ""
 "Display the worksheet template when planning an Intervention from a ticket\n"
 msgstr ""
 "\n"
-"Geef het werkbladsjabloon weer bij het plannen van een interventie vanaf een ticket\n"
+"Geef het werkbonsjabloon weer bij het plannen van een interventie vanaf een ticket\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_event_booth
@@ -20785,7 +20785,7 @@ msgstr "Configuratie"
 #: model:ir.model,name:base.model_ir_actions_todo
 #: model:ir.ui.menu,name:base.menu_ir_actions_todo_form
 msgid "Configuration Wizards"
-msgstr "Configuratie wizard"
+msgstr "Configuratiewizards"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_partner_commission
@@ -41775,7 +41775,7 @@ msgstr "Het uur moet tussen 0 en 23 . liggen"
 #: model:ir.model.fields,help:base.field_res_partner__user_id
 #: model:ir.model.fields,help:base.field_res_users__user_id
 msgid "The internal user in charge of this contact."
-msgstr "De interne gebruiker verantwoordelijk voor dit contract."
+msgstr "De interne gebruiker verantwoordelijk voor dit contact."
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_ir_cron_check_strictly_positive_interval

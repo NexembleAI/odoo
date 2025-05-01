@@ -1243,7 +1243,7 @@ msgstr "自動保存"
 #. odoo-javascript
 #: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
 msgid "Available fields"
-msgstr "利用可能な項目"
+msgstr "利用可能なフィールド"
 
 #. module: web
 #. odoo-javascript
@@ -1853,7 +1853,7 @@ msgstr "ドキュメントレイアウトを設定"
 #: code:addons/web/static/src/views/list/list_confirmation_dialog.xml:0
 #: code:addons/web/static/src/webclient/switch_company_menu/switch_company_menu.xml:0
 msgid "Confirm"
-msgstr "確認"
+msgstr "確定"
 
 #. module: web
 #. odoo-javascript
@@ -3010,7 +3010,7 @@ msgid ""
 msgstr ""
 "Excel との互換性について、カラム数が 16384 を超える場合はデータをエクスポートできません。\n"
 "\n"
-"ヒント: 軸を反転させる、さらにフィルタリングする、または単位数を減らしてみて下さい。"
+"ヒント: 軸を反転させる、さらにフィルタリングする、または集計項目数を減らしてみて下さい。"
 
 #. module: web
 #. odoo-javascript
@@ -4082,7 +4082,7 @@ msgstr "F5キーを押してアプリケーションを再ロードすること�
 #. odoo-javascript
 #: code:addons/web/static/src/views/view_components/report_view_measures.xml:0
 msgid "Measures"
-msgstr "分析対象"
+msgstr "集計項目"
 
 #. module: web
 #. odoo-javascript
@@ -10711,7 +10711,7 @@ msgstr "建設作業員"
 #. odoo-javascript
 #: code:addons/web/static/src/core/tree_editor/tree_editor_operator_editor.js:0
 msgid "contains"
-msgstr "が次を含む"
+msgstr "次を含む"
 
 #. module: web
 #. odoo-javascript
@@ -15504,7 +15504,7 @@ msgstr "が次の間である"
 #. odoo-javascript
 #: code:addons/web/static/src/core/tree_editor/tree_editor_operator_editor.js:0
 msgid "is in"
-msgstr "は以下内:"
+msgstr "次のいずれかに一致:"
 
 #. module: web
 #. odoo-javascript
