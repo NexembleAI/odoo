@@ -651,7 +651,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"            Integración del dispositivo eTIMS para EDI de Fabricación de Kenia\n"
+"            Integración del dispositivo eTIMS para EDI de Manufactura de Kenia\n"
 "        "
 
 #. module: base
@@ -3445,7 +3445,7 @@ msgid ""
 "Bridge module between MRP subcontracting and Quality\n"
 msgstr ""
 "\n"
-"Módulo de enlace entre subcontratación de Fabricación y Calidad\n"
+"Módulo de enlace entre subcontratación de Manufactura y Calidad\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mrp_subcontracting_repair
@@ -3454,7 +3454,7 @@ msgid ""
 "Bridge module between MRP subcontracting and Repair\n"
 msgstr ""
 "\n"
-"Módulo de enlace entre subcontratación de Fabricación y Reparación\n"
+"Módulo de enlace entre subcontratación de Manufactura y Reparación\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_be_reports_sms
@@ -3976,7 +3976,7 @@ msgid ""
 "Convert employee's extra hours to leave allocations.\n"
 msgstr ""
 "\n"
-"Convierta las horas adicionales de sus empleados en asignaciones de permisos.\n"
+"Convierta las horas extra de sus empleados en asignaciones de permisos.\n"
 "\n"
 
 #. module: base
@@ -12918,7 +12918,7 @@ msgstr "3. %y, %Y         ==&gt; 08, 2008"
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_appraisal_survey
 msgid "360 Feedback"
-msgstr "Evaluación de desempeño 360°"
+msgstr "Retroalimentación 360"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_external_tax
@@ -15876,7 +15876,7 @@ msgstr "Evaluación y contratos"
 #: model:ir.module.category,name:base.module_category_human_resources_appraisals
 #: model:ir.module.module,shortdesc:base.module_hr_appraisal
 msgid "Appraisals"
-msgstr "Evaluación"
+msgstr "Evaluaciones"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_documents_approvals
@@ -18479,7 +18479,7 @@ msgstr "Completar ID"
 #: model:ir.model.fields,field_description:base.field_res_partner__complete_name
 #: model:ir.model.fields,field_description:base.field_res_users__complete_name
 msgid "Complete Name"
-msgstr "Completar nombre"
+msgstr "Nombre completo"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_fields__compute
@@ -23389,7 +23389,7 @@ msgstr "Guam"
 #. module: base
 #: model:res.country,name:base.gt
 msgid "Guatemala"
-msgstr "Guatemala "
+msgstr "Guatemala"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_gt
@@ -25757,7 +25757,7 @@ msgstr "Kenia - Punto de venta"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_ke_edi_oscu_mrp
 msgid "Kenya ETIMS EDI Manufacturing Integration"
-msgstr "Integración de eTIMS para EDI de Fabricación de Kenia"
+msgstr "Integración de eTIMS para EDI de Manufactura de Kenia"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_ke_edi_oscu_stock
@@ -26477,7 +26477,7 @@ msgstr "Cargar traducción"
 #. module: base
 #: model:ir.actions.act_window,name:base.demo_force_install_action
 msgid "Load demo data"
-msgstr "Cargar datos de demostración"
+msgstr "Cargar datos de prueba"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_lang__code
@@ -27061,22 +27061,22 @@ msgstr "Gestione la venta de estands de eventos"
 #: model:ir.module.module,summary:base.module_l10n_be_hr_payroll_attendance
 msgid "Manage extra hours for your hourly paid employees for belgian payroll"
 msgstr ""
-"Gestione las horas adicionales para los empleados con sueldo por hora en la "
-"nómina de Bélgica"
+"Gestione las horas extra para los empleados con sueldo por hora en la nómina"
+" de Bélgica"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_payroll_attendance
 msgid "Manage extra hours for your hourly paid employees using attendance"
 msgstr ""
-"Gestione las horas adicionales de sus empleados que reciben un pago por hora"
-" con la aplicación Asistencias"
+"Gestione las horas extra de sus empleados que reciben un pago por hora con "
+"la aplicación Asistencias"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_payroll_planning
 msgid "Manage extra hours for your hourly paid employees using planning"
 msgstr ""
-"Gestione las horas adicionales de sus empleados a los que les paga por hora "
-"con la aplicación Planeación"
+"Gestione las horas extra de sus empleados a los que les paga por hora con la"
+" aplicación Planeación"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account_accountant
@@ -32674,7 +32674,8 @@ msgstr "Registros con errores"
 #. module: base
 #: model:ir.module.module,summary:base.module_stock_barcode_mrp
 msgid "Process Manufacturing Orders from the barcode application"
-msgstr "Procese órdenes de fabricación desde la aplicación Código de barras"
+msgstr ""
+"Procese las órdenes de fabricación desde la aplicación Código de barras"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_sale_stock
@@ -33835,7 +33836,7 @@ msgstr "Alquiler"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_mrp_renting
 msgid "Rental Manufacturing Bridge"
-msgstr "Enlace entre Alquiler y Fabricación"
+msgstr "Enlace entre Alquiler y Manufactura"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_rental_product_configurators
@@ -34596,7 +34597,7 @@ msgstr "Ventas y compra"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_async_emails
 msgid "Sales - Async Emails"
-msgstr "Venta - correos asincrónicos"
+msgstr "Ventas - Envío asíncrono de correos"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_project
@@ -36169,7 +36170,7 @@ msgstr "Tablero de hojas de cálculo para Chat en vivo"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_spreadsheet_dashboard_mrp_account
 msgid "Spreadsheet dashboard for manufacturing"
-msgstr "Tablero de hojas de cálculo para Fabricación"
+msgstr "Tablero de hojas de cálculo para Manufactura"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_spreadsheet_dashboard_hr_payroll

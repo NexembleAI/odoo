@@ -205,7 +205,7 @@ msgstr "25"
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.report_mrporder
 msgid "50"
-msgstr ""
+msgstr "50"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.report_mrporder
@@ -1623,7 +1623,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mrp.mo_overview_content
 #, python-format
 msgid "Cost of Components per unit"
-msgstr ""
+msgstr "Náklady na komponenty na jednotku"
 
 #. module: mrp
 #. odoo-javascript
@@ -1631,7 +1631,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mrp.mo_overview_content
 #, python-format
 msgid "Cost of Operations per unit"
-msgstr ""
+msgstr "Náklady na operace za jednotku"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_workcenter__costs_hour
@@ -1727,6 +1727,10 @@ msgid ""
 "and nothing is specified, Odoo will assume that all operations can be "
 "started simultaneously."
 msgstr ""
+"Vytvářejte závislosti na provozní úrovni, které ovlivní plánování i stav "
+"pracovních příkazů po potvrzení Produkčního příkazu. Pokud je tato funkce "
+"zaškrtnutá a není nic zadáno, Odoo bude předpokládat, že všechny operace "
+"mohou být zahájeny současně."
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_stock_move__created_production_id
@@ -2826,7 +2830,7 @@ msgstr "Data JSON pro widget popover"
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.report_mrporder
 msgid "John Doe"
-msgstr ""
+msgstr "Jan Testovací"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_document__key
@@ -7065,7 +7069,7 @@ msgstr "pracovní příkazy"
 #: code:addons/mrp/static/src/components/mo_overview_line/mrp_mo_overview_line.xml:0
 #, python-format
 msgid "{{ foldButtonTitle }}"
-msgstr ""
+msgstr "{{ foldButtonTitle }}"
 
 #. module: mrp
 #. odoo-javascript
@@ -7075,7 +7079,7 @@ msgstr ""
 #: code:addons/mrp/static/src/components/bom_overview_special_line/mrp_bom_overview_special_line.xml:0
 #, python-format
 msgid "{{ props.isFolded ? 'Unfold' : 'Fold' }}"
-msgstr ""
+msgstr "{{ props.isFolded ? 'Rozvinout' : 'Složit' }}"
 
 #. module: mrp
 #. odoo-javascript
@@ -7085,4 +7089,4 @@ msgstr ""
 #: code:addons/mrp/static/src/components/mo_overview_operations_block/mrp_mo_overview_operations_block.xml:0
 #, python-format
 msgid "{{ state.isFolded ? 'Unfold' : 'Fold' }}"
-msgstr ""
+msgstr "{{ state.isFolded ? 'Rozvinout' : 'Složit' }}"

@@ -18,6 +18,7 @@
 # Wil Odoo, 2025
 # Rastislav Brencic <rastislav.brencic99@gmail.com>, 2025
 # Vojtěch Olšan, 2025
+# Denis Gobin, 2025
 # Marta Wacławek, 2025
 # 
 msgid ""
@@ -145,7 +146,7 @@ msgstr "(aktuální)"
 #: model_terms:ir.ui.view,arch_db:web.external_layout_standard
 #: model_terms:ir.ui.view,arch_db:web.external_layout_striped
 msgid "(document name)"
-msgstr ""
+msgstr "(Název dokumentu)"
 
 #. module: web
 #. odoo-javascript
@@ -185,7 +186,7 @@ msgstr ""
 #: code:addons/web/static/src/webclient/user_menu/user_menu_items.xml:0
 #, python-format
 msgid "+ KEY"
-msgstr ""
+msgstr "+ KLÍČ"
 
 #. module: web
 #. odoo-javascript
@@ -982,7 +983,7 @@ msgstr ""
 #: code:addons/web/static/src/views/form/form_controller.js:0
 #, python-format
 msgid "Add Properties"
-msgstr ""
+msgstr "Přidat vlastnosti"
 
 #. module: web
 #. odoo-javascript
@@ -31442,7 +31443,7 @@ msgstr "uniforma"
 #: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
 #, python-format
 msgid "universal"
-msgstr "zniverzální"
+msgstr "univerzální"
 
 #. module: web
 #. odoo-javascript
@@ -33653,14 +33654,14 @@ msgstr "zombie"
 #: code:addons/web/static/src/views/view_components/column_progress.xml:0
 #, python-format
 msgid "{{ bar.count }} {{ bar.string }}"
-msgstr ""
+msgstr "{{ bar.count }} {{ bar.string }}"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/views/kanban/kanban_column_quick_create.xml:0
 #, python-format
 msgid "{{ relatedFieldName }}..."
-msgstr ""
+msgstr "{{ relatedFieldName }}..."
 
 #. module: web
 #. odoo-javascript

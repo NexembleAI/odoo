@@ -7697,8 +7697,8 @@ msgstr ""
 "\n"
 "主な特徴\n"
 "------------\n"
-"*イベントと登録を管理する。\n"
-"*電子メールを使用して、自動的に確認し、イベント登録の確認を送信します。\n"
+"*イベントと登録を管理します。\n"
+"*メールを使用して、自動的に確定し、イベント登録の確認を送信します。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_latam_check
@@ -11922,17 +11922,17 @@ msgid ""
 "Also implements the removal strategy First Expiry First Out (FEFO) widely used, for example, in food industries.\n"
 msgstr ""
 "\n"
-"製品と生産ロットの異なる日付を追跡します。\n"
+"プロダクトおよび製造ロットに対して、さまざまな日付を追跡します。\n"
 "==========================================\n"
 "\n"
 "次の日付を追跡できます：\n"
 "-------------------------------\n"
-"- 廃棄\n"
-"- 賞味・使用期限\n"
-"- 除去日\n"
+"- 使用終了日\n"
+"- 品質保持期限\n"
+"- 払出期限\n"
 "- アラート日\n"
 "\n"
-"また、食品産業において、例えば、除去戦略、使用期限ファーストアウト(FEFO)の、広く使用されている実装がされています。\n"
+"食品業界などで広く使用されている払出(廃棄)戦略である、使用期限順先出(FEFO)も実装されています。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_maintenance
@@ -18253,7 +18253,7 @@ msgstr "プロダクトを構成"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_upgrade
 msgid "Confirm"
-msgstr "確認"
+msgstr "確定"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_users_identitycheck_view_form
@@ -19672,7 +19672,7 @@ msgstr "配送 - 在庫"
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_partner__type__delivery
 msgid "Delivery Address"
-msgstr "配送先"
+msgstr "配送先住所"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_delivery
@@ -20870,7 +20870,7 @@ msgstr "企業版ウェブサイトビルダー"
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_R
 msgid "Entertainment"
-msgstr "娯楽"
+msgstr "エンターテイメント"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_profile__entry_count
@@ -21436,7 +21436,7 @@ msgstr "請求書スキャンからデータを抽出して、自動的に入力
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_U
 msgid "Extraterritorial"
-msgstr "治外法権"
+msgstr "国際機関"
 
 #. module: base
 #: model:res.partner.industry,full_name:base.res_partner_industry_F
@@ -25566,13 +25566,13 @@ msgstr "ラトビア - 会計"
 #: model_terms:ir.ui.view,arch_db:base.config_wizard_step_view_form
 #: model_terms:ir.ui.view,arch_db:base.ir_actions_todo_tree
 msgid "Launch"
-msgstr "起動"
+msgstr "開始"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.config_wizard_step_view_form
 #: model_terms:ir.ui.view,arch_db:base.ir_actions_todo_tree
 msgid "Launch Configuration Wizard"
-msgstr "起動設定ウィザード"
+msgstr "設定ウィザードを開始"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__layout_background
@@ -31103,7 +31103,7 @@ msgstr "取引先"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_partner_autocomplete
 msgid "Partner Autocomplete"
-msgstr "連絡先情報自動提案"
+msgstr "取引先自動入力"
 
 #. module: base
 #: model:ir.model,name:base.model_res_partner_category
@@ -38033,7 +38033,7 @@ msgstr "モデル翻訳されたフィールドの翻訳は、偽の値とstr値
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_H
 msgid "Transportation/Logistics"
-msgstr "運輸/物流"
+msgstr "交通/物流"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_act_window_view__view_mode__tree
@@ -38095,14 +38095,14 @@ msgstr "タークス・カイコス諸島"
 msgid ""
 "Turn emails received in your mailbox into leads and log their content as "
 "internal notes."
-msgstr "メールボックスに届いたメールをリードに変換し、その内容を社内メモとして記録します。"
+msgstr "メールボックスに届いたメールをリードに変換し、その内容を内部メモとして記録します。"
 
 #. module: base
 #: model:ir.module.module,description:base.module_project_mail_plugin
 msgid ""
 "Turn emails received in your mailbox into tasks and log their content as "
 "internal notes."
-msgstr "メールボックスに届いたメールをタスクに変換し、その内容を社内メモとして記録します。"
+msgstr "メールボックスに届いたメールをタスクに変換し、その内容を内部メモとして記録します。"
 
 #. module: base
 #: model:res.country,name:base.tv

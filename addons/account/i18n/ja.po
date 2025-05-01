@@ -1852,7 +1852,7 @@ msgstr "収益の期間を移動させるために使用する科目"
 #. module: account
 #: model:ir.model.fields,help:account.field_res_company__expense_accrual_account_id
 msgid "Account used to move the period of an expense"
-msgstr "消費の期間を移動させるために使用する科目"
+msgstr "費用の期間配分に使用する勘定科目"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_tax__cash_basis_transition_account_id
@@ -3376,7 +3376,7 @@ msgstr "0の時ブランク"
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__res_partner__invoice_warn__block
 msgid "Blocking Message"
-msgstr "阻止メッセージ"
+msgstr "ブロッキングメッセージ"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_report_column__figure_type__boolean
@@ -4212,7 +4212,7 @@ msgstr "まずEメールサーバを設定し、請求書をEメールで送信�
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 #, python-format
 msgid "Confirm"
-msgstr "確認"
+msgstr "確定"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
@@ -5414,7 +5414,7 @@ msgstr "遅延タイプ"
 #: model:ir.model.fields,field_description:account.field_account_payment__partner_shipping_id
 #: model:res.groups,name:account.group_delivery_invoice_address
 msgid "Delivery Address"
-msgstr "配送先"
+msgstr "配送先住所"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__delivery_date
@@ -6334,7 +6334,7 @@ msgstr "費用"
 #: model:ir.model.fields,field_description:account.field_product_product__property_account_expense_id
 #: model:ir.model.fields,field_description:account.field_product_template__property_account_expense_id
 msgid "Expense Account"
-msgstr "費用"
+msgstr "費用勘定"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_automatic_entry_wizard__expense_accrual_account
@@ -7325,7 +7325,7 @@ msgstr "チェックした場合は、一部のメッセージに配信エラー
 msgid ""
 "If empty, the discount will be discounted directly on the income/expense "
 "account. If set, discount on invoices will be realized in separate accounts."
-msgstr "空の場合、値引は収支勘定で直接値引かれます。設定された場合、請求書の割引は別勘定で実現されます。"
+msgstr "この項目が空欄の場合、割引は直接、収益／費用勘定に反映されます。設定されている場合は、請求書上の割引は別の勘定科目で処理されます。"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_reversal__journal_id
@@ -7428,7 +7428,8 @@ msgid ""
 "If you sell goods and services to customers in a foreign EU country, you "
 "must charge VAT based on the delivery address. This rule applies regardless "
 "of where you are located."
-msgstr "EU加盟国のお客様に商品及びサービスを販売するため、配送住所によってVATが課税されます。あなたの所在国にかかわらず、規則が適用されます。"
+msgstr ""
+"EU加盟国のお客様に商品及びサービスを販売するため、配送先住所によってVATが課税されます。あなたの所在国にかかわらず、規則が適用されます。"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.account_unreconcile_view
@@ -12566,17 +12567,17 @@ msgstr "請求書を添付して顧客に送信しました"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_company__account_discount_expense_allocation_id
 msgid "Separate account for expense discount"
-msgstr "経費値引用に勘定を分ける"
+msgstr "費用割引のための別勘定"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_company__account_discount_income_allocation_id
 msgid "Separate account for income discount"
-msgstr "収入値引用に勘定を分ける"
+msgstr "収益割引のための別勘定"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
 msgid "Separate discount accounts on invoices"
-msgstr "請求書で割引勘定を分ける"
+msgstr "請求書割引のための別勘定"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__res_company__fiscalyear_last_month__9
@@ -13954,7 +13955,7 @@ msgstr "選択した日付は、ロック日で保護されています"
 #: model:ir.model.fields,help:account.field_account_payment__partner_shipping_id
 msgid ""
 "The delivery address will be used in the computation of the fiscal position."
-msgstr "配送住所は会計ポジションの計算に使われます。"
+msgstr "配送先住所は会計ポジションの計算に使われます。"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_bank_statement_line__invoice_origin
@@ -14259,7 +14260,7 @@ msgstr "支払いの通貨。"
 msgid ""
 "The recipient bank account linked to this invoice is archived.\n"
 "So you cannot confirm the invoice."
-msgstr "この請求書に紐づけられた受取人の銀行口座はアーカイブされたため、請求書を確認できません。"
+msgstr "この請求書に紐づけられた受取人の銀行口座はアーカイブされたため、請求書を確定できません。"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_reconcile_model__match_partner_category_ids
