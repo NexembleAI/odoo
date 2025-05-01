@@ -7544,8 +7544,8 @@ msgstr ""
 "\n"
 "主な特徴\n"
 "------------\n"
-"*イベントと登録を管理する。\n"
-"*電子メールを使用して、自動的に確認し、イベント登録の確認を送信します。\n"
+"*イベントと登録を管理します。\n"
+"*メールを使用して、自動的に確定し、イベント登録の確認を送信します。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_latam_check
@@ -10299,12 +10299,12 @@ msgstr ""
 "\n"
 "次の日付を追跡できます：\n"
 "-------------------------------\n"
-"- 人生の終わり\n"
-"- 賞味期限\n"
-"- 除去日\n"
+"- 使用終了日\n"
+"- 品質保持期限\n"
+"- 払出期限\n"
 "- アラート日\n"
 "\n"
-"また、食品産業において、例えば、除去戦略、有効期限ファーストアウト(FEFO)の、広く使用されている実装がされています。\n"
+"食品業界などで広く使用されている払出(廃棄)戦略である、使用期限順先出(FEFO)も実装されています。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_transifex
@@ -16013,12 +16013,12 @@ msgstr "製品を構成する"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_upgrade
 msgid "Confirm"
-msgstr "確認"
+msgstr "確定"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.identity_check_wizard
 msgid "Confirm Password"
-msgstr "パスワードを確認"
+msgstr "パスワードの確認"
 
 #. module: base
 #: model:res.country,name:base.cg
@@ -22237,7 +22237,7 @@ msgstr "逆レート"
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_partner__type__invoice
 msgid "Invoice Address"
-msgstr "請求先"
+msgstr "請求先住所"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account
@@ -30676,12 +30676,12 @@ msgstr "販売-プロジェクト"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_expense
 msgid "Sales Expense"
-msgstr "販売経費"
+msgstr "販売費用"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_expense_margin
 msgid "Sales Expense Margin"
-msgstr "販売経費マージン"
+msgstr "販売費用マージン"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sales_team

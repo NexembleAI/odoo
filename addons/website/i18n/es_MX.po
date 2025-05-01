@@ -2403,7 +2403,7 @@ msgstr "Rebote"
 #: model_terms:ir.ui.view,arch_db:website.s_image_gallery_options
 #: model_terms:ir.ui.view,arch_db:website.snippet_options
 msgid "Boxed"
-msgstr "Archivado"
+msgstr "Con caja"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_countdown_options
@@ -4337,7 +4337,7 @@ msgstr "Eventos"
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.snippet_options
 msgid "Every Time"
-msgstr "Cada vez"
+msgstr "Siempre"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.searchbar_input_snippet_options
@@ -8478,7 +8478,7 @@ msgstr "Grupo restringido"
 #. module: website
 #: model:ir.actions.act_window,name:website.action_website_rewrite_list
 msgid "Rewrite"
-msgstr "Volver a escribir"
+msgstr "Reescritura de URL"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_chart_options

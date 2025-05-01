@@ -499,7 +499,7 @@ msgstr "התשלום הקשור לעסקה עם הפניה%(ref)s נרשם: %(li
 #: code:addons/account_payment/controllers/payment.py:0
 #, python-format
 msgid "The provided parameters are invalid."
-msgstr ""
+msgstr "הפרמטרים שסופקו אינם תקינים."
 
 #. module: account_payment
 #: model:ir.model.fields,help:account_payment.field_account_payment__source_payment_id
@@ -577,3 +577,5 @@ msgid ""
 "You must first deactivate a payment provider before deleting its journal.\n"
 "Linked providers: %s"
 msgstr ""
+"עליך קודם להשבית ספק תשלום לפני מחיקת יומן שלו.\n"
+"ספקים מקושרים: %s"

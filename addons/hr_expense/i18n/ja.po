@@ -227,7 +227,7 @@ msgstr "アップロード中にエラーが発生しました"
 #. module: hr_expense
 #: model:ir.model.fields,help:hr_expense.field_hr_expense__account_id
 msgid "An expense account is expected"
-msgstr "経費勘定科目を指定"
+msgstr "費用勘定科目を指定"
 
 #. module: hr_expense
 #. odoo-javascript
@@ -363,7 +363,7 @@ msgstr "銀行仕訳帳"
 #. module: hr_expense
 #: model:ir.model.fields,field_description:hr_expense.field_hr_expense__reference
 msgid "Bill Reference"
-msgstr "請求参照"
+msgstr "請求参照番号"
 
 #. module: hr_expense
 #: model:ir.model.fields,help:hr_expense.field_hr_expense__tax_ids
@@ -753,7 +753,7 @@ msgstr "経費仕訳"
 #. module: hr_expense
 #: model:ir.model.fields,field_description:hr_expense.field_hr_expense_sheet__expense_line_ids
 msgid "Expense Lines"
-msgstr "経費の行"
+msgstr "経費明細"
 
 #. module: hr_expense
 #: model:ir.model.fields,field_description:hr_expense.field_hr_expense_sheet__is_editable
@@ -932,7 +932,7 @@ msgstr "あなたのチームメンバーの経費"
 #. module: hr_expense
 #: model_terms:ir.ui.view,arch_db:hr_expense.account_journal_dashboard_kanban_view_inherit_hr_expense
 msgid "Expenses to Process"
-msgstr "未処理経費"
+msgstr "処理待ちの経費"
 
 #. module: hr_expense
 #: model:ir.model.fields,field_description:hr_expense.field_hr_expense__is_refused

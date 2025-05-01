@@ -2371,6 +2371,13 @@
         }
         return rows;
     }
+    function isSheetNameEqual(name1, name2) {
+        if (name1 === undefined || name2 === undefined) {
+            return false;
+        }
+        return (getUnquotedSheetName(name1.trim().toUpperCase()) ===
+            getUnquotedSheetName(name2.trim().toUpperCase()));
+    }
 
     /*
      * https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
@@ -6953,7 +6960,7 @@
         if (executed.type === "ADD_COLUMNS_ROWS") {
             return expandZoneOnInsertion(zone, executed.dimension === "COL" ? "left" : "top", executed.base, executed.position, executed.quantity);
         }
-        return { ...zone };
+        return zone;
     }
 
     /**
@@ -18416,7 +18423,13 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
         }
         return null;
     }
-    const separatorRegexp = /\w|\.|!|\$/;
+    /**
+      - \p{L} is for any letter (from any language)
+      - \p{N} is for any number
+      - the u flag at the end is for unicode, which enables the `\p{...}` syntax
+     */
+    const unicodeSymbolCharRegexp = /\p{L}|\p{N}|_|\.|!|\$/u;
+    const SYMBOL_CHARS = new Set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.!$");
     /**
      * A "Symbol" is just basically any word-like element that can appear in a
      * formula, which is not a string. So:
@@ -18456,7 +18469,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                 };
             }
         }
-        while (chars[0] && chars[0].match(separatorRegexp)) {
+        while (chars[0] && (SYMBOL_CHARS.has(chars[0]) || chars[0].match(unicodeSymbolCharRegexp))) {
             result += chars.shift();
         }
         if (result.length) {
@@ -19628,7 +19641,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                         const { xc, sheetName: sheet } = splitReference(token.value);
                         const sheetName = sheet || this.getters.getSheetName(this.sheetId);
                         const activeSheetId = this.getters.getActiveSheetId();
-                        if (this.getters.getSheetName(activeSheetId) !== sheetName) {
+                        if (!isSheetNameEqual(this.getters.getSheetName(activeSheetId), sheetName)) {
                             return false;
                         }
                         const refRange = this.getters.getRangeFromSheetXC(activeSheetId, xc);
@@ -21707,18 +21720,28 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
     function useInterval(callback, delay) {
         let intervalId;
         const { setInterval, clearInterval } = window;
+        const pause = () => {
+            clearInterval(intervalId);
+            intervalId = undefined;
+        };
+        const safeCallback = () => {
+            try {
+                callback();
+            }
+            catch (e) {
+                pause();
+                throw e;
+            }
+        };
         owl.useEffect(() => {
-            intervalId = setInterval(callback, delay);
+            intervalId = setInterval(safeCallback, delay);
             return () => clearInterval(intervalId);
         }, () => [delay]);
         return {
-            pause: () => {
-                clearInterval(intervalId);
-                intervalId = undefined;
-            },
+            pause,
             resume: () => {
                 if (intervalId === undefined) {
-                    intervalId = setInterval(callback, delay);
+                    intervalId = setInterval(safeCallback, delay);
                 }
             },
         };
@@ -25023,7 +25046,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
         ({ xc, sheetName } = splitReference(reference));
         let rangeSheetIndex;
         if (sheetName) {
-            const index = data.sheets.findIndex((sheet) => sheet.name === sheetName);
+            const index = data.sheets.findIndex((sheet) => isSheetNameEqual(sheet.name, sheetName));
             if (index < 0) {
                 throw new Error("Unable to find a sheet with the name " + sheetName);
             }
@@ -25195,7 +25218,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
             var _a;
             externalRefId = Number(externalRefId) - 1;
             cellRef = cellRef.replace(/\$/g, "");
-            const sheetIndex = data.externalBooks[externalRefId].sheetNames.findIndex((name) => name === sheetName);
+            const sheetIndex = data.externalBooks[externalRefId].sheetNames.findIndex((name) => isSheetNameEqual(name, sheetName));
             if (sheetIndex === -1) {
                 return match;
             }
@@ -25534,7 +25557,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
      */
     function convertTableFormulaReferences(convertedSheets, xlsxSheets) {
         for (let tableSheet of convertedSheets) {
-            const tables = xlsxSheets.find((s) => s.sheetName === tableSheet.name).tables;
+            const tables = xlsxSheets.find((s) => isSheetNameEqual(s.sheetName, tableSheet.name)).tables;
             for (let table of tables) {
                 const tabRef = table.name + "[";
                 for (let sheet of convertedSheets) {
@@ -30732,7 +30755,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
             if (name) {
                 const unquotedName = getUnquotedSheetName(name);
                 for (const key in this.sheetIdsMapName) {
-                    if (key.toUpperCase() === unquotedName.toUpperCase()) {
+                    if (isSheetNameEqual(key, unquotedName)) {
                         return this.sheetIdsMapName[key];
                     }
                 }
@@ -30987,7 +31010,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
         checkSheetName(cmd) {
             const { orderedSheetIds, sheets } = this;
             const name = cmd.name && cmd.name.trim().toLowerCase();
-            if (orderedSheetIds.find((id) => { var _a; return ((_a = sheets[id]) === null || _a === void 0 ? void 0 : _a.name.toLowerCase()) === name; })) {
+            if (orderedSheetIds.find((id) => { var _a; return isSheetNameEqual((_a = sheets[id]) === null || _a === void 0 ? void 0 : _a.name, name); })) {
                 return 11 /* CommandResult.DuplicatedSheetName */;
             }
             if (FORBIDDEN_IN_EXCEL_REGEX.test(name)) {
@@ -35252,6 +35275,8 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                         const { col, row } = this.getters.getNextVisibleCellPosition(cmd.sheetIdTo, 0, 0);
                         this.selectCell(col, row);
                     }
+                    const { col, row } = this.gridSelection.anchor.cell;
+                    this.moveClient({ sheetId: this.activeSheet.id, col, row });
                     break;
                 }
                 case "REMOVE_COLUMNS_ROWS": {
@@ -36213,10 +36238,8 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
         }
         const target = [];
         for (const zone1 of cmd.target) {
-            for (const zone2 of executed.target) {
-                if (!overlap(zone1, zone2)) {
-                    target.push({ ...zone1 });
-                }
+            if (executed.target.every((zone2) => !overlap(zone1, zone2))) {
+                target.push(zone1);
             }
         }
         if (target.length) {
@@ -40868,7 +40891,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                         if (range.sheetId === cmd.sheetId) {
                             return { changeType: "CHANGE", range };
                         }
-                        if (cmd.name && range.invalidSheetName === cmd.name) {
+                        if (isSheetNameEqual(range.invalidSheetName, cmd.name)) {
                             const invalidSheetName = undefined;
                             const sheetId = cmd.sheetId;
                             const newRange = range.clone({ sheetId, invalidSheetName });
@@ -43777,9 +43800,9 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
     Object.defineProperty(exports, '__esModule', { value: true });
 
 
-    __info__.version = '16.0.66';
-    __info__.date = '2025-03-26T12:54:26.409Z';
-    __info__.hash = 'e2c1da2';
+    __info__.version = '16.0.68';
+    __info__.date = '2025-04-25T08:10:32.128Z';
+    __info__.hash = '682d48e';
 
 
 })(this.o_spreadsheet = this.o_spreadsheet || {}, owl);
