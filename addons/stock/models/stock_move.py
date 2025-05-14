@@ -6,6 +6,7 @@ from collections import defaultdict
 from datetime import timedelta
 from operator import itemgetter
 from re import findall as regex_findall
+import logging
 
 from odoo import SUPERUSER_ID, _, api, Command, fields, models
 from odoo.exceptions import UserError
@@ -15,6 +16,8 @@ from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 from odoo.tools.misc import clean_context, OrderedSet, groupby
 
 PROCUREMENT_PRIORITIES = [('0', 'Normal'), ('1', 'Urgent')]
+
+_logger = logging.getLogger(__name__)
 
 
 class StockMove(models.Model):
@@ -324,7 +327,16 @@ class StockMove(models.Model):
         self.ensure_one()
         quantity = 0
         for move_line in self.move_line_ids:
-            quantity += move_line.product_uom_id._compute_quantity(move_line.quantity, self.product_uom, round=False)
+            try:
+                quantity += move_line.product_uom_id._compute_quantity(
+                    move_line.quantity, self.product_uom, round=False
+                )
+            except Exception as e:
+                _logger.error(
+                    f"Error computing quantity for move line {move_line} ({move_line.quantity}, {self.product_uom}): {e}"
+                )
+                raise
+
         return quantity
 
     @api.depends('move_line_ids.quantity', 'move_line_ids.product_uom_id')
@@ -354,7 +366,15 @@ class StockMove(models.Model):
             sum_qty = defaultdict(float)
             for move, product_uom, qty_sum in data:
                 uom = move.product_uom
-                sum_qty[move.id] += product_uom._compute_quantity(qty_sum, uom, round=False)
+                try:
+                    sum_qty[move.id] += product_uom._compute_quantity(
+                        qty_sum, uom, round=False
+                    )
+                except Exception as e:
+                    _logger.error(
+                        f"Error computing quantity for move line {move} ({uom}, {product_uom}): {e}"
+                    )
+                    raise
 
             for move in self:
                 move.quantity = sum_qty[move.id]
@@ -2024,8 +2044,8 @@ Please change the quantity done or the rounding precision of your unit of measur
         return new_move_vals
 
     def _post_process_created_moves(self):
-        # This method is meant to be overriden in order to execute post 
-        # creation actions that would be bypassed since the move was 
+        # This method is meant to be overriden in order to execute post
+        # creation actions that would be bypassed since the move was
         # and will probably never be confirmed
         pass
 

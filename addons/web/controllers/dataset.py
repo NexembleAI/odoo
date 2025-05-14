@@ -17,23 +17,37 @@ class DataSet(http.Controller):
 
     def _call_kw(self, model, method, args, kwargs):
         Model = request.env[model]
-        get_public_method(Model, method)  # Don't use the result, call_kw will redo the getattr
+        get_public_method(
+            Model, method
+        )  # Don't use the result, call_kw will redo the getattr
         return call_kw(Model, method, args, kwargs)
 
-    @http.route(['/web/dataset/call_kw', '/web/dataset/call_kw/<path:path>'], type='json', auth="user")
+    @http.route(
+        ["/web/dataset/call_kw", "/web/dataset/call_kw/<path:path>"],
+        type="json",
+        auth="user",
+    )
     def call_kw(self, model, method, args, kwargs, path=None):
         return self._call_kw(model, method, args, kwargs)
 
-    @http.route('/web/dataset/call_button', type='json', auth="user")
+    @http.route("/web/dataset/call_button", type="json", auth="user")
     def call_button(self, model, method, args, kwargs):
-        action = self._call_kw(model, method, args, kwargs)
-        if isinstance(action, dict) and action.get('type') != '':
+        try:
+            action = self._call_kw(model, method, args, kwargs)
+
+        except Exception as e:
+            _logger.error(
+                f"Error while calling button {method} on model {model} with args {args} and kwargs {kwargs}: {e}"
+            )
+            raise
+
+        if isinstance(action, dict) and action.get("type") != "":
             return clean_action(action, env=request.env)
         return False
 
-    @http.route('/web/dataset/resequence', type='json', auth="user")
-    def resequence(self, model, ids, field='sequence', offset=0, context=None):
-        """ Re-sequences a number of records in the model, by their ids
+    @http.route("/web/dataset/resequence", type="json", auth="user")
+    def resequence(self, model, ids, field="sequence", offset=0, context=None):
+        """Re-sequences a number of records in the model, by their ids
 
         The re-sequencing starts at the first model of ``ids``, the sequence
         number is incremented by one after each record and starts at ``offset``

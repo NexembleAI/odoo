@@ -448,7 +448,13 @@ def _call_kw_model(method, self, args, kwargs):
     context, args, kwargs = split_context(method, args, kwargs)
     recs = self.with_context(context or {})
     _logger.debug("call %s.%s(%s)", recs, method.__name__, Params(args, kwargs))
-    result = method(recs, *args, **kwargs)
+    try:
+        result = method(recs, *args, **kwargs)
+
+    except Exception as e:
+        _logger.error("Error while calling %s.%s(%s): %s", recs, method.__name__, Params(args, kwargs), e)
+        raise
+
     return downgrade(method, result, recs, args, kwargs)
 
 

@@ -394,6 +394,7 @@ actual arch.
                         name=view_name, file=view.arch_fs
                     ))
                     err.context = {'name': 'invalid view'}
+                    _logger.error(f"View vaidation error: {etree.tostring(combined_arch, encoding='unicode')}")
                     raise err
 
                 if combined_archs[0].tag == 'data':
@@ -1360,7 +1361,12 @@ actual arch.
             for child in reversed(node):
                 stack.append((child, node_info['editable'], validate))
 
-        name_manager.check(self)
+        try:
+            name_manager.check(self)
+
+        except Exception:
+            _logger.error(f"View validation failed for {self} ({self.name}) model {model_name} with type {view_type}: {etree.tostring(node)}", exc_info=True)
+            raise
 
         return name_manager
 
@@ -3026,8 +3032,8 @@ class NameManager:
                     ))
                 ):
                     msg = _(
-                        "Field %(name)r used in %(use)s is restricted to the group(s) %(groups)s.",
-                        name=name, use=use, groups=','.join(
+                        "Field %(name)r used in %(use)s in view %(view)s is restricted to the group(s) %(groups)s.",
+                        name=name, use=use, view=view, groups=','.join(
                             group
                             for availability in self.available_fields[name]['groups']
                             for combination in availability

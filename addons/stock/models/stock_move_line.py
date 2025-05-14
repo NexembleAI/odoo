@@ -2,6 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from collections import Counter, defaultdict
+import logging
 
 from odoo import _, api, fields, tools, models, Command
 from odoo.exceptions import UserError, ValidationError
@@ -10,6 +11,8 @@ from odoo.tools import OrderedSet, groupby
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 
+
+_logger = logging.getLogger(__name__)
 
 class StockMoveLine(models.Model):
     _name = "stock.move.line"
@@ -158,7 +161,16 @@ class StockMoveLine(models.Model):
     @api.depends('quantity', 'product_uom_id')
     def _compute_quantity_product_uom(self):
         for line in self:
-            line.quantity_product_uom = line.product_uom_id._compute_quantity(line.quantity, line.product_id.uom_id, rounding_method='HALF-UP')
+            try:
+                line.quantity_product_uom = line.product_uom_id._compute_quantity(
+                    line.quantity, line.product_id.uom_id, rounding_method="HALF-UP"
+                )
+
+            except Exception as e:
+                _logger.info(
+                    f"Error while computing quantity_product_uom for move line {line} ({line.product_uom_id}, {line.quantity}, {line.product_id.uom_id}): {e}"
+                )
+                raise
 
     @api.constrains('lot_id', 'product_id')
     def _check_lot_product(self):
@@ -326,7 +338,6 @@ class StockMoveLine(models.Model):
                 quants_data.append((quant.id, {"available_quantity": quant.available_quantity + sum(ml.quantity_product_uom for ml in deleted_lines), "move_line_ids": dirty_lines.ids}))
                 move_lines_data += [(ml.id, {"quantity": ml.quantity, "quant_id": quant.id}) for ml in dirty_lines]
         return [quants_data, move_lines_data]
-
 
     def init(self):
         if not tools.index_exists(self._cr, 'stock_move_line_free_reservation_index'):
@@ -634,7 +645,6 @@ class StockMoveLine(models.Model):
                 else:
                     ml_ids_tracked_without_lot.add(ml.id)
 
-
         if ml_ids_tracked_without_lot:
             mls_tracked_without_lot = self.env['stock.move.line'].browse(ml_ids_tracked_without_lot)
             raise UserError(_('You need to supply a Lot/Serial Number for product: \n - ') +
@@ -857,7 +867,6 @@ class StockMoveLine(models.Model):
         returns: dictionary {product_id+name+description+uom+packaging: {product, name, description, quantity, product_uom, packaging}, ...}
         """
         aggregated_move_lines = {}
-
 
         # Loops to get backorders, backorders' backorders, and so and so...
         backorders = self.env['stock.picking']
